@@ -1,1 +1,30 @@
+# LangChain
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langchain-chroma
+langchain-classic
+langchain-text-splitters
 
+# Vector DB & Embeddings
+chromadb
+sentence-transformers
+huggingface-hub
+torch
+
+# Document Loaders
+pypdf
+pymupdf
+docx2txt
+python-docx
+
+# API & Server
+fastapi
+uvicorn
+pyngrok
+nest-asyncio
+
+# Utilities
+python-dotenv
+pydantic
