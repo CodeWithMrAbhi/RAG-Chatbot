@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1PCxk7B7Qwd3f3Ch6yzvg4ERdSbuCSVez
 """
 
-!pip install --upgrade langchain langchain-core langchain-groq
-
 import os
 os.environ["GROQ_API_KEY"]="GROQ_API_KEY"
 
@@ -111,8 +109,6 @@ prompt_value
 
 llm.invoke(prompt_value)
 
-!pip install pypdf
-!pip install -U langchain-community
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, UnstructuredPDFLoader, PDFMinerLoader, PyMuPDFLoader, UnstructuredWordDocumentLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -175,7 +171,6 @@ print(f"Created embeddings for {len(document_embeddings)} document chunks")
 
 document_embeddings[0]
 
-!pip install -U langchain-chroma chromadb
 from langchain_chroma import Chroma
 
 embedding_function = HuggingFaceEmbeddings()
@@ -263,16 +258,13 @@ contextualize_chain.invoke({
     "chat_history": chat_history
 })
 
-!pip install --upgrade langchain langchain-community langchain-core
 from langchain_classic.chains import create_history_aware_retriever
 history_aware_retriever = create_history_aware_retriever(
     llm, retriever, contextualize_q_prompt
 )
 history_aware_retriever.invoke({"input":"what mathematical subjects abhishek know ?", "chat_history": chat_history})
 
-!pip install -U langchain langchain-core langchain-community
 
-!pip install langchain-classic
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
@@ -367,17 +359,11 @@ print(f"AI: {answer}\n")
 
 """Fast api code"""
 
-!pip install pyngrok nest-asyncio fastapi uvicorn
 from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 import uvicorn
-import nest_asyncio
-from pyngrok import ngrok
 import shutil
 import uuid
-
-from pyngrok import ngrok
-ngrok.set_auth_token("NGROK_AUTH_TOKEN")
 
 app = FastAPI()
 
@@ -463,11 +449,4 @@ def new_session():
     session_id = str(uuid.uuid4())
     return {"session_id": session_id}
 
-nest_asyncio.apply()
-
-public_url = ngrok.connect(8000)
 print(f"🌍 Your API is LIVE at: {public_url}")
-
-config = uvicorn.Config(app, host="0.0.0.0", port=8000)
-server = uvicorn.Server(config)
-await server.serve()
